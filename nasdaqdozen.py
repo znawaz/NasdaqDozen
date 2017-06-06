@@ -1,7 +1,7 @@
 __author__ = 'linmichaelj'
 
 import webparser
-import quandl
+import quandl2
 import sys
 import pprint
 
@@ -13,14 +13,14 @@ def main():
     symbol = sys.argv[1]
 
     test_results = {
-        "revenue_test": quandl.revenue_test(symbol),
-        "eps_test": quandl.eps_test(symbol),
-        "roe_test": quandl.roe_test(symbol),
+        "revenue_test": quandl2.revenue_test(symbol),
+        "eps_test": quandl2.eps_test(symbol),
+        "roe_test": quandl2.roe_test(symbol),
         "recommendation_test": webparser.recommendation_test(symbol),
         "surprise_test": webparser.earning_surprise_test(symbol),
         "forecast_test": webparser.eps_forecast_test(symbol),
         "earnings_growth_test": webparser.earnings_growth_test(symbol),
-        "peg_test": quandl.peg_test(symbol),
+        "peg_test": quandl2.peg_test(symbol),
         "cover_test": webparser.days_to_cover_test(symbol),
         "insider_test": webparser.insider_trading_test(symbol)
     }
@@ -32,17 +32,17 @@ def main():
     if len(sys.argv) > 2 and sys.argv[2] == '-v':
         pprint.pprint(test_results)
 
-    print '------------------------------------------------------'
-    print 'Summary'
+    print ('------------------------------------------------------')
+    print ('Summary')
 
     count = 0
     for key in test_results.keys():
         if test_results[key][0]:
-            print key + ": " + "Pass"
+            print (key + ": " + "Pass")
             count += 1
         else:
-            print key + ": " + "Fail"
-    print "Total Passed: " + str(count)
+            print (key + ": " + "Fail")
+    print ("Total Passed: " + str(count))
 
 
 

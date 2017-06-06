@@ -1,6 +1,6 @@
 __author__ = 'linmichaelj'
 
-import urllib2
+from urllib.request import urlopen
 import helper
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -13,7 +13,7 @@ def get_soup(url, selenium):
         data = driver.page_source
 
     else:
-        usock = urllib2.urlopen(url)
+        usock = urlopen(url)
         data = usock.read()
         usock.close()
 

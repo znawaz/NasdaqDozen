@@ -1,11 +1,11 @@
 __author__ = 'linmichaelj'
 
-import Quandl
+import quandl
 import helper
 
 
 def revenue_test(symbol):
-    rev_data_frame = Quandl.get('OFDP/DMDRN_' + symbol + '_REV_LAST')
+    rev_data_frame = quandl.get('OFDP/DMDRN_' + symbol + '_REV_LAST')
     rev_series = rev_data_frame['Revenues']
 
     years_increasing = helper.get_years_increasing(rev_series)
@@ -13,7 +13,7 @@ def revenue_test(symbol):
 
 
 def eps_test(symbol):
-    rev_data_frame = Quandl.get('OFDP/DMDRN_' + symbol + '_EPS_GRO')
+    rev_data_frame = quandl.get('OFDP/DMDRN_' + symbol + '_EPS_GRO')
     rev_series = rev_data_frame['Growth in Earnings Per Share']
 
     years_increasing = helper.get_years_greater_than(rev_series, 0)
@@ -21,7 +21,7 @@ def eps_test(symbol):
 
 
 def roe_test(symbol):
-    rev_data_frame = Quandl.get('OFDP/DMDRN_' + symbol + '_ROE')
+    rev_data_frame = quandl.get('OFDP/DMDRN_' + symbol + '_ROE')
     rev_series = rev_data_frame['Return on Equity']
 
     years_increasing = helper.get_years_increasing(rev_series)
@@ -29,7 +29,7 @@ def roe_test(symbol):
 
 
 def peg_test(symbol):
-    rev_data_frame = Quandl.get('OFDP/DMDRN_' + symbol + '_PE_G')
+    rev_data_frame = quandl.get('OFDP/DMDRN_' + symbol + '_PE_G')
     rev_series = rev_data_frame['PE to Growth Ratio']
 
     years = helper.get_years_greater_than(rev_series, 1)
